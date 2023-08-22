@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OrderItemRepository extends CrudRepository<OrderItem, Long> {
+    OrderItem findByOrderIdAndItemId(Long orderId, Long itemId);
 }

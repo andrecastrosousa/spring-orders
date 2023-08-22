@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f302f4d-5dbd-43b2-a992-cba14050c6ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/model/OrderItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/service/OrderItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/controller/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/controller/OrderItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/repository/OrderItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/repository/OrderItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/service/OrderItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/service/OrderItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/service/OrderService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,15 +68,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/andresousa/development/java/spring/spring-orders&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/andresousa/development/java/spring/spring-orders/src/main/java/mindswap/academy/springorders/order/converter"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/converter" />
+      <recent name="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/dto" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
