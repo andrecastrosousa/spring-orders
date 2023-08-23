@@ -27,6 +27,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public ItemDto create(ItemCreateDto itemCreateDto) {
         Item item = itemConverter.toEntityFromCreateDto(itemCreateDto);
+        System.out.println(item);
         itemRepository.save(item);
         return itemConverter.toDto(item);
     }

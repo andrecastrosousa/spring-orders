@@ -5,16 +5,19 @@ import jakarta.persistence.*;
 import mindswap.academy.springorders.item.model.Item;
 
 @Entity
+@Table(name = "order_items")
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(name = "order_id", nullable = false)
     @JsonIgnore
     private Order order;
 
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(name = "item_id", nullable = false)
     private Item item;
 
     private int quantity;

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,7 +13,7 @@ public class Order {
 
     private double total;
 
-    @ManyToOne
+    @OneToMany
     private List<OrderItem> orderItems;
 
     public Long getId() {

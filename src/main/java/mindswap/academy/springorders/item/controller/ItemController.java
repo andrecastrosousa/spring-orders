@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RestController(value = "/items")
+@RestController
+@RequestMapping(path = "/api/items")
 public class ItemController {
     ItemService itemService;
 
@@ -20,31 +21,31 @@ public class ItemController {
         this.itemService = itemService;
     }
 
-    @GetMapping()
-    public List<ItemDto> get() {
+    @GetMapping
+    public List<ItemDto> list() {
         return itemService.getAll();
     }
 
-    @GetMapping(value = "/{id}")
-    public ItemDto get(@RequestParam("id") Long itemId) {
+    @GetMapping("/{id}")
+    public ItemDto get(@PathVariable("id") Long itemId) {
         return itemService.findById(itemId);
     }
 
     @PostMapping
     @Transactional
-    public ItemDto post(ItemCreateDto itemCreateDto) {
+    public ItemDto post(@RequestBody ItemCreateDto itemCreateDto) {
         return itemService.create(itemCreateDto);
     }
 
     @PutMapping("/{id}")
     @Transactional
-    public ItemDto put(@RequestParam("id") Long itemId, ItemDto itemDto) {
+    public ItemDto put(@PathVariable("id") Long itemId, @RequestBody ItemDto itemDto) {
         return itemService.update(itemId, itemDto);
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void delete(@RequestParam("id") Long itemId) {
+    public void delete(@PathVariable("id") Long itemId) {
         itemService.delete(itemId);
     }
 }

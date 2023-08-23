@@ -7,14 +7,12 @@ import mindswap.academy.springorders.order.dto.OrderCreateDto;
 import mindswap.academy.springorders.order.dto.OrderDto;
 import mindswap.academy.springorders.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController(value = "/orders")
+@RestController
+@RequestMapping(path = "/api/orders")
 public class OrderController {
     OrderService orderService;
 
@@ -29,19 +27,19 @@ public class OrderController {
     }
 
     @GetMapping("/{orderId}")
-    public OrderDto get(@PathParam("orderId") Long orderId) {
+    public OrderDto get(@PathVariable("orderId") Long orderId) {
         return orderService.findById(orderId);
     }
 
     @PostMapping
     @Transactional
-    public OrderDto create(OrderCreateDto order) {
+    public OrderDto create(@RequestBody OrderCreateDto order) {
         return orderService.create(order);
     }
 
     @DeleteMapping("/{orderId}")
     @Transactional
-    public void delete(@PathParam("orderId") Long orderId) {
+    public void delete(@PathVariable("orderId") Long orderId) {
         orderService.delete(orderId);
     }
 }
