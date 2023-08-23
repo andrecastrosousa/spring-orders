@@ -1,6 +1,7 @@
 package mindswap.academy.springorders.item.controller;
 
 import jakarta.transaction.Transactional;
+import mindswap.academy.springorders.item.converter.ItemConverter;
 import mindswap.academy.springorders.item.dto.ItemCreateDto;
 import mindswap.academy.springorders.item.dto.ItemDto;
 import mindswap.academy.springorders.item.service.ItemService;
@@ -12,9 +13,12 @@ import java.util.List;
 
 @RestController(value = "/items")
 public class ItemController {
+    ItemService itemService;
 
     @Autowired
-    ItemService itemService;
+    ItemController(ItemService itemService) {
+        this.itemService = itemService;
+    }
 
     @GetMapping()
     public List<ItemDto> get() {

@@ -6,6 +6,7 @@ import mindswap.academy.springorders.order.dto.OrderDto;
 import mindswap.academy.springorders.order.dto.OrderItemDto;
 import mindswap.academy.springorders.order.dto.OrderItemUpdateDto;
 import mindswap.academy.springorders.order.service.OrderItemService;
+import mindswap.academy.springorders.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +14,12 @@ import java.util.List;
 
 @RestController(value = "/orders")
 public class OrderItemController {
-    @Autowired
     OrderItemService orderItemService;
+
+    @Autowired
+    OrderItemController(OrderItemService orderItemService) {
+        this.orderItemService = orderItemService;
+    }
 
     @GetMapping("/{orderId}/items")
     @RolesAllowed("user")

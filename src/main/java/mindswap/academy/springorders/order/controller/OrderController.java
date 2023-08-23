@@ -16,9 +16,12 @@ import java.util.List;
 
 @RestController(value = "/orders")
 public class OrderController {
+    OrderService orderService;
 
     @Autowired
-    OrderService orderService;
+    OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @GetMapping
     public List<OrderDto> list() {

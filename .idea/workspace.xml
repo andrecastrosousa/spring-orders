@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f302f4d-5dbd-43b2-a992-cba14050c6ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/mindswap/academy/springorders/item/controller/ItemResourceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/mindswap/academy/springorders/order/controller/OrderItemResourceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/mindswap/academy/springorders/order/controller/OrderResourceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/mindswap/academy/springorders/order/service/OrderItemServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/item/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/item/controller/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/item/repository/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/item/repository/ItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/item/service/ItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/item/service/ItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/controller/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/controller/OrderItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/service/OrderItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/service/OrderItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/service/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/service/OrderServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +86,28 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="mindswap.academy.springorders.order.service" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="OrderItemResourceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-orders" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mindswap.academy.springorders.order.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="mindswap.academy.springorders.order.controller" />
+      <option name="MAIN_CLASS_NAME" value="mindswap.academy.springorders.order.controller.OrderItemResourceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.OrderItemResourceTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

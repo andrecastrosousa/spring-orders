@@ -21,16 +21,26 @@ import java.util.List;
 
 @Service
 public class OrderItemServiceImpl implements OrderItemService {
-    @Autowired
     OrderItemRepository orderItemRepository;
-    @Autowired
     OrderRepository orderRepository;
-    @Autowired
     ItemRepository itemRepository;
-    @Autowired
     OrderConverter orderConverter;
-    @Autowired
     OrderItemConverter orderItemConverter;
+
+    @Autowired
+    OrderItemServiceImpl(
+            OrderRepository orderRepository,
+            OrderConverter orderConverter,
+            OrderItemConverter orderItemConverter,
+            OrderItemRepository orderItemRepository,
+            ItemRepository itemRepository
+    ) {
+        this.orderConverter = orderConverter;
+        this.orderRepository = orderRepository;
+        this.orderItemRepository = orderItemRepository;
+        this.orderItemConverter = orderItemConverter;
+        this.itemRepository = itemRepository;
+    }
 
     @Override
     public List<OrderItemDto> getListOfOrderItem(Long orderId) {

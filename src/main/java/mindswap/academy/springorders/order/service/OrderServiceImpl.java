@@ -15,12 +15,14 @@ import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-    @Autowired
     OrderRepository orderRepository;
-
+    OrderConverter orderConverter;
 
     @Autowired
-    OrderConverter orderConverter;
+    OrderServiceImpl(OrderRepository orderRepository, OrderConverter orderConverter) {
+        this.orderConverter = orderConverter;
+        this.orderRepository = orderRepository;
+    }
 
     @Override
     public List<OrderDto> listAll() {

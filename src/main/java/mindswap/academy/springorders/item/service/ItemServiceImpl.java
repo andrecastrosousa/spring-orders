@@ -7,18 +7,22 @@ import mindswap.academy.springorders.item.model.Item;
 import mindswap.academy.springorders.item.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ItemServiceImpl implements ItemService {
-
-    @Autowired
     ItemRepository itemRepository;
+    ItemConverter itemConverter;
 
     @Autowired
-    ItemConverter itemConverter;
+    ItemServiceImpl(ItemRepository itemRepository, ItemConverter itemConverter) {
+        this.itemRepository = itemRepository;
+        this.itemConverter = itemConverter;
+    }
 
     @Override
     public ItemDto create(ItemCreateDto itemCreateDto) {
