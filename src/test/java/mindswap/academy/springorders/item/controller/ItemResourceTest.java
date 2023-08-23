@@ -1,18 +1,65 @@
 package mindswap.academy.springorders.item.controller;
 
+import jakarta.transaction.Transactional;
+import mindswap.academy.springorders.SpringOrdersApplication;
+import mindswap.academy.springorders.item.converter.ItemConverter;
 import mindswap.academy.springorders.item.dto.ItemCreateDto;
 import mindswap.academy.springorders.item.dto.ItemDto;
+import mindswap.academy.springorders.item.repository.ItemRepository;
+import mindswap.academy.springorders.order.converter.OrderConverter;
+import mindswap.academy.springorders.order.model.Order;
+import mindswap.academy.springorders.order.repository.OrderItemRepository;
+import mindswap.academy.springorders.order.repository.OrderRepository;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.*;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.time.LocalDateTime;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes={SpringOrdersApplication.class}, webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class ItemResourceTest {
+    OrderItemRepository orderItemRepository;
+    OrderRepository orderRepository;
+    ItemRepository itemRepository;
+    ItemConverter itemConverter;
+
+    @Autowired
+    public ItemResourceTest(
+            OrderItemRepository orderItemRepository,
+            OrderRepository orderRepository,
+            ItemRepository itemRepository,
+            ItemConverter itemConverter
+    ) {
+        this.orderItemRepository = orderItemRepository;
+        this.orderRepository = orderRepository;
+        this.itemRepository = itemRepository;
+        this.itemConverter = itemConverter;
+    }
+
     ItemDto itemDto = new ItemDto(1L, 50.0F, "toalha");
 
     ItemCreateDto itemCreateDto = new ItemCreateDto(50.0F, "toalha");
+
+    @BeforeEach
+    @Transactional
+    public void before() {
+        orderItemRepository.deleteAll();
+        itemRepository.deleteAll();
+        orderRepository.deleteAll();
+
+        orderItemRepository.reset();
+        itemRepository.reset();
+        orderRepository.reset();
+
+        itemRepository.save(itemConverter.toEntityFromCreateDto(itemCreateDto));
+    }
 
     @Nested
     @Tag("validations")
@@ -145,7 +192,7 @@ public class ItemResourceTest {
                     .when()
                     .delete("/api/items/1")
                     .then()
-                    .statusCode(HttpStatus.SC_NO_CONTENT);
+                    .statusCode(HttpStatus.SC_OK);
 
         }
     }

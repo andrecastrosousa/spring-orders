@@ -13,7 +13,7 @@ public class Order {
 
     private double total;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> orderItems;
 
     public Long getId() {

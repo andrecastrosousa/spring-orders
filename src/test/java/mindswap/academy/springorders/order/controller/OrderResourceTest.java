@@ -1,18 +1,65 @@
 package mindswap.academy.springorders.order.controller;
 
+import jakarta.transaction.Transactional;
+import mindswap.academy.springorders.SpringOrdersApplication;
+import mindswap.academy.springorders.item.repository.ItemRepository;
+import mindswap.academy.springorders.order.converter.OrderConverter;
 import mindswap.academy.springorders.order.dto.OrderCreateDto;
+import mindswap.academy.springorders.order.model.Order;
+import mindswap.academy.springorders.order.repository.OrderItemRepository;
+import mindswap.academy.springorders.order.repository.OrderRepository;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.*;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+
+import java.time.LocalDateTime;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
-
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes={SpringOrdersApplication.class}, webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class OrderResourceTest {
+    OrderItemRepository orderItemRepository;
+    OrderRepository orderRepository;
+    ItemRepository itemRepository;
+    OrderConverter orderConverter;
+
+    @Autowired
+    public OrderResourceTest(
+        OrderItemRepository orderItemRepository,
+        OrderRepository orderRepository,
+        ItemRepository itemRepository,
+        OrderConverter orderConverter
+    ) {
+        this.orderItemRepository = orderItemRepository;
+        this.orderRepository = orderRepository;
+        this.itemRepository = itemRepository;
+        this.orderConverter = orderConverter;
+    }
 
     OrderCreateDto orderCreateDto = new OrderCreateDto();
+
+    @BeforeEach
+    @Transactional
+    public void before() {
+        orderItemRepository.deleteAll();
+        itemRepository.deleteAll();
+        orderRepository.deleteAll();
+
+        orderItemRepository.reset();
+        itemRepository.reset();
+        orderRepository.reset();
+
+        orderCreateDto.setOrderDatetime(LocalDateTime.now());
+        Order order = orderConverter.toEntityFromCreateDto(orderCreateDto);
+
+        orderRepository.save(order);
+    }
 
     @Nested
     @Tag("validations")
@@ -50,7 +97,7 @@ public class OrderResourceTest {
                     .when()
                     .post("/api/orders")
                     .then()
-                    .statusCode(200)
+                    .statusCode(HttpStatus.SC_OK)
                     .body("id", is(2))
                     .body("total", is(0.0F));
         }
@@ -61,7 +108,7 @@ public class OrderResourceTest {
             given()
                     .get("/api/orders")
                     .then()
-                    .statusCode(200)
+                    .statusCode(HttpStatus.SC_OK)
                     .body("size()", is(1));
         }
 
@@ -71,7 +118,7 @@ public class OrderResourceTest {
             given()
                     .delete("/api/orders/1")
                     .then()
-                    .statusCode(204);
+                    .statusCode(HttpStatus.SC_OK);
 
         }
     }
