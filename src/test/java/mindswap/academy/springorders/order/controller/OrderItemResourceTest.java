@@ -1,11 +1,13 @@
 package mindswap.academy.springorders.order.controller;
 
 
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import mindswap.academy.springorders.item.model.Item;
 import mindswap.academy.springorders.order.dto.OrderItemDto;
 import mindswap.academy.springorders.order.dto.OrderItemUpdateDto;
 import org.apache.http.HttpStatus;
+import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -13,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
-@SpringBootTest
 public class OrderItemResourceTest {
     OrderItemDto orderItemAddDto = new OrderItemDto();
 
@@ -28,7 +29,7 @@ public class OrderItemResourceTest {
         public void listItemsOfNonExistentOrder() {
             given()
                     .when()
-                    .get("/orders/20/items")
+                    .get("/api/orders/20/items")
                     .then()
                     .statusCode(HttpStatus.SC_NOT_FOUND);
         }
@@ -48,7 +49,7 @@ public class OrderItemResourceTest {
                     .contentType(ContentType.JSON)
                     .body(orderItemAddDto)
                     .when()
-                    .put("/orders/1/items")
+                    .put("/api/orders/1/items")
                     .then()
                     .statusCode(HttpStatus.SC_NOT_FOUND);
         }
@@ -68,7 +69,7 @@ public class OrderItemResourceTest {
                     .contentType(ContentType.JSON)
                     .body(orderItemAddDto)
                     .when()
-                    .put("/orders/20/items")
+                    .put("/api/orders/20/items")
                     .then()
                     .statusCode(HttpStatus.SC_NOT_FOUND);
         }
@@ -83,7 +84,7 @@ public class OrderItemResourceTest {
                     .contentType(ContentType.JSON)
                     .body(orderItemUpdateDto)
                     .when()
-                    .put("/orders/1/items/20")
+                    .put("/api/orders/1/items/20")
                     .then()
                     .statusCode(HttpStatus.SC_NOT_FOUND);
         }
@@ -98,7 +99,7 @@ public class OrderItemResourceTest {
                     .contentType(ContentType.JSON)
                     .body(orderItemUpdateDto)
                     .when()
-                    .put("/orders/20/items/1")
+                    .put("/api/orders/20/items/1")
                     .then()
                     .statusCode(HttpStatus.SC_NOT_FOUND);
         }
@@ -107,7 +108,7 @@ public class OrderItemResourceTest {
         @DisplayName("Remove a non existent item from order")
         public void removeItemFromOrder() {
             given()
-                    .delete("/orders/1/items/20")
+                    .delete("/api/orders/1/items/20")
                     .then()
                     .statusCode(HttpStatus.SC_NOT_FOUND);
         }
@@ -116,7 +117,7 @@ public class OrderItemResourceTest {
         @DisplayName("Remove item from non existent order")
         public void removeItemFromNonExistentOrder() {
             given()
-                    .delete("/orders/20/items/1")
+                    .delete("/api/orders/20/items/1")
                     .then()
                     .statusCode(HttpStatus.SC_NOT_FOUND);
         }
@@ -132,7 +133,7 @@ public class OrderItemResourceTest {
             given()
                     .when()
                     .auth().preemptive().basic("andre@gmail.com", "ola123")
-                    .get("/orders/1/items")
+                    .get("/api/orders/1/items")
                     .then()
                     .statusCode(HttpStatus.SC_OK)
                     .body("size()", is(1));
@@ -153,7 +154,7 @@ public class OrderItemResourceTest {
                     .contentType(ContentType.JSON)
                     .body(orderItemAddDto)
                     .when()
-                    .put("/orders/1/items")
+                    .put("/api/orders/1/items")
                     .then()
                     .statusCode(200)
                     .body("id", is(1))
@@ -172,7 +173,7 @@ public class OrderItemResourceTest {
                     .contentType(ContentType.JSON)
                     .body(orderItemUpdateDto)
                     .when()
-                    .put("/orders/1/items/1")
+                    .put("/api/orders/1/items/1")
                     .then()
                     .statusCode(200)
                     .body("id", is(1))
@@ -184,14 +185,14 @@ public class OrderItemResourceTest {
         @DisplayName("Remove Item from Order")
         public void removeItemFromOrder() {
             given()
-                    .get("/orders/1/items")
+                    .get("/api/orders/1/items")
                     .then()
                     .statusCode(200)
                     .body("size()", is(1));
 
 
             given()
-                    .delete("/orders/1/items/1")
+                    .delete("/api/orders/1/items/1")
                     .then()
                     .statusCode(204);
         }

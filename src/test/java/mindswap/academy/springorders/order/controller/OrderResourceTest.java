@@ -10,7 +10,6 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
 
-@SpringBootTest
 public class OrderResourceTest {
 
     OrderCreateDto orderCreateDto = new OrderCreateDto();
@@ -23,7 +22,7 @@ public class OrderResourceTest {
         @DisplayName("Get an order not founded")
         public void getOrderNotFound() {
             given()
-                    .get("/orders/2")
+                    .get("/api/orders/2")
                     .then()
                     .statusCode(HttpStatus.SC_NOT_FOUND);
         }
@@ -32,7 +31,7 @@ public class OrderResourceTest {
         @DisplayName("Delete an order not founded")
         public void deleteOrderNotFound() {
             given()
-                    .delete("/orders/2")
+                    .delete("/api/orders/2")
                     .then()
                     .statusCode(HttpStatus.SC_NOT_FOUND);
         }
@@ -49,7 +48,7 @@ public class OrderResourceTest {
                     .header("Content-Type", "application/json")
                     .body(orderCreateDto)
                     .when()
-                    .post("/orders")
+                    .post("/api/orders")
                     .then()
                     .statusCode(200)
                     .body("id", is(2))
@@ -60,7 +59,7 @@ public class OrderResourceTest {
         @DisplayName("Get a list of orders associated to user")
         public void getOrders() {
             given()
-                    .get("/orders")
+                    .get("/api/orders")
                     .then()
                     .statusCode(200)
                     .body("size()", is(1));
@@ -70,7 +69,7 @@ public class OrderResourceTest {
         @DisplayName("Delete an orders associated to a user")
         public void deleteOrder() {
             given()
-                    .delete("/orders/1")
+                    .delete("/api/orders/1")
                     .then()
                     .statusCode(204);
 

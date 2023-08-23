@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
-@SpringBootTest
 public class ItemResourceTest {
     ItemDto itemDto = new ItemDto(1L, 50.0F, "toalha");
 
@@ -26,7 +25,7 @@ public class ItemResourceTest {
         public void getItemNotFound() {
             given()
                     .when()
-                    .get("/items/" + 100)
+                    .get("/api/items/" + 100)
                     .then()
                     .statusCode(HttpStatus.SC_NOT_FOUND);
         }
@@ -38,7 +37,7 @@ public class ItemResourceTest {
                     .header("Content-Type", "application/json")
                     .body(itemDto)
                     .when()
-                    .put("/items/" + 10)
+                    .put("/api/items/" + 10)
                     .then()
                     .statusCode(HttpStatus.SC_NOT_FOUND);
         }
@@ -48,7 +47,7 @@ public class ItemResourceTest {
         public void deleteItemNotFound() {
             given()
                     .when()
-                    .delete("/items/15")
+                    .delete("/api/items/15")
                     .then()
                     .statusCode(HttpStatus.SC_NOT_FOUND);
         }
@@ -65,7 +64,7 @@ public class ItemResourceTest {
                     .header("Content-Type", "application/json")
                     .body(itemCreateDto)
                     .when()
-                    .post("/items")
+                    .post("/api/items")
                     .then()
                     .statusCode(HttpStatus.SC_OK)
                     .body("id", is(2))
@@ -78,7 +77,7 @@ public class ItemResourceTest {
         public void listItemsAsAdmin() {
             given()
                     .when()
-                    .get("/items")
+                    .get("/api/items")
                     .then()
                     .statusCode(HttpStatus.SC_OK)
                     .body("size()", is(1));
@@ -89,7 +88,7 @@ public class ItemResourceTest {
         public void listItemAsAdmin() {
             given()
                     .when()
-                    .get("/items/1")
+                    .get("/api/items/1")
                     .then()
                     .statusCode(HttpStatus.SC_OK)
                     .body("id", is(1))
@@ -102,7 +101,7 @@ public class ItemResourceTest {
         public void listItemsAsUser() {
             given()
                     .when()
-                    .get("/items")
+                    .get("/api/items")
                     .then()
                     .statusCode(HttpStatus.SC_OK)
                     .body("size()", is(1));
@@ -113,7 +112,7 @@ public class ItemResourceTest {
         public void listItemAsUser() {
             given()
                     .when()
-                    .get("/items/1")
+                    .get("/api/items/1")
                     .then()
                     .statusCode(HttpStatus.SC_OK)
                     .body("id", is(1))
@@ -130,7 +129,7 @@ public class ItemResourceTest {
                     .header("Content-Type", "application/json")
                     .body(itemUpdated)
                     .when()
-                    .put("/items/" + 1)
+                    .put("/api/items/" + 1)
                     .then()
                     .statusCode(HttpStatus.SC_OK)
                     .body("id", is(1))
@@ -144,7 +143,7 @@ public class ItemResourceTest {
         public void deleteItem() {
             given()
                     .when()
-                    .delete("/items/1")
+                    .delete("/api/items/1")
                     .then()
                     .statusCode(HttpStatus.SC_NO_CONTENT);
 
