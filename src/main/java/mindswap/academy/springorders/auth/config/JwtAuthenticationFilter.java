@@ -4,7 +4,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import mindswap.academy.springorders.auth.repository.TokenRepository;
+import mindswap.academy.springorders.auth.service.repository.TokenRepository;
 import mindswap.academy.springorders.auth.service.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;

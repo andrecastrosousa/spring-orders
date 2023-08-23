@@ -71,4 +71,45 @@ public class Token {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public static TokenBuilder builder() {
+        return new TokenBuilder();
+    }
+
+    public static class TokenBuilder {
+        private final Token token;
+
+        public TokenBuilder user(User user) {
+            token.setUser(user);
+            return this;
+        }
+
+        public TokenBuilder token(String jwt) {
+            token.setToken(jwt);
+            return this;
+        }
+
+        public TokenBuilder tokenType(TokenType tokenType) {
+            token.setTokenType(tokenType);
+            return this;
+        }
+
+        public TokenBuilder expired(boolean expired) {
+            token.setExpired(expired);
+            return this;
+        }
+
+        public TokenBuilder revoked(boolean revoked) {
+            token.setRevoked(revoked);
+            return this;
+        }
+
+        private TokenBuilder() {
+            token = new Token();
+        }
+
+        public Token build() {
+            return token;
+        }
+    }
 }

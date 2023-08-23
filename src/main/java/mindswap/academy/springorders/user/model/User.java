@@ -114,4 +114,44 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public static UserBuilder builder() {
+        return new UserBuilder();
+    }
+
+    public static class UserBuilder {
+        private final User user;
+
+        public UserBuilder firstname(String firstname) {
+            user.setFirstname(firstname);
+            return this;
+        }
+
+        public UserBuilder lastname(String lastname) {
+            user.setLastname(lastname);
+            return this;
+        }
+
+        public UserBuilder email(String email) {
+            user.setEmail(email);
+            return this;
+        }
+
+        public UserBuilder password(String password) {
+            user.setPassword(password);
+            return this;
+        }
+
+        public UserBuilder role(Role role) {
+            user.setRole(role);
+            return this;
+        }
+
+        private UserBuilder() {
+            user = new User();
+        }
+        public User build() {
+            return user;
+        }
+    }
 }
