@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
@@ -53,12 +55,21 @@ public class SecurityConfiguration {
                                 "/swagger-ui.html"
                         ).permitAll())
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers(
-                                "/api/v1/management/**"
-                        ).hasAnyRole(ADMIN.name(), MANAGER.name())
+                        auth.requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), MANAGER.name())
                 )
+                .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+                .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .logout(logout ->
+                        logout
+                                .addLogoutHandler(logoutHandler)
+                                .logoutUrl("/api/v1/auth/logout")
+                                .logoutSuccessHandler(
+                                        (request, response, authentication) ->
+                                                SecurityContextHolder.clearContext()
+                                )
+                );
 
         return http.build();
     }

@@ -8,7 +8,7 @@ import mindswap.academy.springorders.auth.dto.AuthenticationResponse;
 import mindswap.academy.springorders.auth.dto.RegisterRequest;
 import mindswap.academy.springorders.auth.model.Token;
 import mindswap.academy.springorders.auth.model.TokenType;
-import mindswap.academy.springorders.auth.service.repository.TokenRepository;
+import mindswap.academy.springorders.auth.repository.TokenRepository;
 import mindswap.academy.springorders.user.model.User;
 import mindswap.academy.springorders.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

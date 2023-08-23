@@ -2,7 +2,7 @@ package mindswap.academy.springorders.auth.service;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import mindswap.academy.springorders.auth.service.repository.TokenRepository;
+import mindswap.academy.springorders.auth.repository.TokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
