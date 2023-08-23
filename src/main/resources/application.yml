@@ -8,7 +8,6 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: 'true'
-
 application:
   security:
     jwt:
@@ -16,6 +15,10 @@ application:
       expiration: 86400000 # a day
       refresh-token:
         expiration: 604800000 # 7 days
-
 server:
+  servlet:
+    context-path: /employee-service
   port: 8080
+addressservice:
+  base:
+    url: https://stage.code.quarkus.io/api
