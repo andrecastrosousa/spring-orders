@@ -1,4 +1,6 @@
 package mindswap.academy.springorders.auth.service;
 
-public interface LogoutService {
+import org.springframework.security.web.authentication.logout.LogoutHandler;
+
+public interface LogoutService extends LogoutHandler {
 }
