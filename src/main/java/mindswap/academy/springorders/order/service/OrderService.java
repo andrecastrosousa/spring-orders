@@ -6,11 +6,11 @@ import mindswap.academy.springorders.order.dto.OrderDto;
 import java.util.List;
 
 public interface OrderService {
-    List<OrderDto> listAll(String email);
+    List<OrderDto> listAll();
 
-    OrderDto findById(String email, Long orderId);
+    OrderDto findById(Long orderId);
 
-    OrderDto create(String email, OrderCreateDto order);
+    OrderDto create(OrderCreateDto order);
 
-    void delete(String email, Long orderId);
+    void delete(Long orderId);
 }

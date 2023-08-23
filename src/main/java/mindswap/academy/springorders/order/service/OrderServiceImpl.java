@@ -1,6 +1,5 @@
 package mindswap.academy.springorders.order.service;
 
-import mindswap.academy.springorders.item.dto.ItemDto;
 import mindswap.academy.springorders.order.converter.OrderConverter;
 import mindswap.academy.springorders.order.dto.OrderCreateDto;
 import mindswap.academy.springorders.order.dto.OrderDto;
@@ -24,14 +23,14 @@ public class OrderServiceImpl implements OrderService {
     OrderConverter orderConverter;
 
     @Override
-    public List<OrderDto> listAll(String email) {
+    public List<OrderDto> listAll() {
         List<OrderDto> orderDtoList = new ArrayList<>();
         orderRepository.findAll().forEach(order -> orderDtoList.add(orderConverter.toDto(order)));
         return orderDtoList;
     }
 
     @Override
-    public OrderDto findById(String email, Long orderId) {
+    public OrderDto findById(Long orderId) {
         Order order = orderRepository.findById(orderId).orElse(null);
         if (order == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found");
@@ -40,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderDto create(String email, OrderCreateDto orderCreateDto) {
+    public OrderDto create(OrderCreateDto orderCreateDto) {
         Order order = orderConverter.toEntityFromCreateDto(orderCreateDto);
         orderRepository.save(order);
 
@@ -48,7 +47,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void delete(String email, Long orderId) {
+    public void delete(Long orderId) {
         Order order = orderRepository.findById(orderId).orElse(null);
         if (order == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found");
