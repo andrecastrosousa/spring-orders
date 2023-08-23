@@ -26,9 +26,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderDto> listAll() {
-        List<OrderDto> orderDtoList = new ArrayList<>();
-        orderRepository.findAll().forEach(order -> orderDtoList.add(orderConverter.toDto(order)));
-        return orderDtoList;
+        return orderRepository.findAll().stream()
+                .map(order -> orderConverter.toDto(order))
+                .toList();
     }
 
     @Override

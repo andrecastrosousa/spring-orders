@@ -45,8 +45,6 @@ public class OrderItemResourceTest {
         Order order = new Order();
         orderRepository.save(order);
 
-        System.out.println(order.getId());
-
         Item item = new Item();
         item.setPrice(2);
         item.setName("copo");

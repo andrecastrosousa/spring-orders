@@ -27,16 +27,15 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public ItemDto create(ItemCreateDto itemCreateDto) {
         Item item = itemConverter.toEntityFromCreateDto(itemCreateDto);
-        System.out.println(item);
         itemRepository.save(item);
         return itemConverter.toDto(item);
     }
 
     @Override
     public List<ItemDto> getAll() {
-        List<ItemDto> itemDtos = new ArrayList<>();
-        itemRepository.findAll().forEach(item -> itemDtos.add(itemConverter.toDto(item)));
-        return itemDtos;
+        return itemRepository.findAll().stream()
+                .map(item -> itemConverter.toDto(item))
+                .toList();
     }
 
     @Override
