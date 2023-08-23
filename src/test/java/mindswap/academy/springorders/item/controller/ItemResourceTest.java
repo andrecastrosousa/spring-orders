@@ -6,8 +6,6 @@ import mindswap.academy.springorders.item.converter.ItemConverter;
 import mindswap.academy.springorders.item.dto.ItemCreateDto;
 import mindswap.academy.springorders.item.dto.ItemDto;
 import mindswap.academy.springorders.item.repository.ItemRepository;
-import mindswap.academy.springorders.order.converter.OrderConverter;
-import mindswap.academy.springorders.order.model.Order;
 import mindswap.academy.springorders.order.repository.OrderItemRepository;
 import mindswap.academy.springorders.order.repository.OrderRepository;
 import org.apache.http.HttpStatus;
@@ -16,8 +14,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.time.LocalDateTime;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
