@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f302f4d-5dbd-43b2-a992-cba14050c6ab" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/mindswap/academy/springorders/item/controller/ItemResourceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/mindswap/academy/springorders/order/controller/OrderItemResourceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/mindswap/academy/springorders/order/controller/OrderResourceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/mindswap/academy/springorders/order/service/OrderItemServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/service/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/service/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,14 +71,18 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/andresousa/development/java/spring/spring-orders/src/main/java/mindswap/academy/springorders/order/converter"
+    "last_opened_file_path": "/Users/andresousa/development/java/spring/spring-orders/src/test/java/mindswap/academy/springorders"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java/mindswap/academy/springorders" />
       <recent name="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/converter" />
       <recent name="$PROJECT_DIR$/src/main/java/mindswap/academy/springorders/order/dto" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="mindswap.academy.springorders.order.service" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
