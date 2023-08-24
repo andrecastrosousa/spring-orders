@@ -1,11 +1,9 @@
 package mindswap.academy.springorders.external.service;
 
-import mindswap.academy.springorders.external.model.Extension;
+import mindswap.academy.springorders.external.model.Pet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-
-import java.util.Set;
 
 @Service
 public class ExternalService {
@@ -15,24 +13,10 @@ public class ExternalService {
     ExternalService(WebClient webClient) {
         this.webClient = webClient;
     }
-    /*@RestClient
-    ExtensionsService extensionsService;
 
-    @RestClient
-    PetService petService;
-
-
-    public Set<Extension> getQuarkusExtension(String id) {
-        return extensionsService.getById(id);
-    }
-
-    public Pet getPetById(Long id) {
-        return petService.getById(id);
-    }*/
-
-    public Set<Extension> getQuarkusExtension(String id) {
-        Extension extension = webClient.get().uri("/" + id).retrieve().bodyToMono(Extension.class).block();
-        return Set.of(extension);
+    public Pet getQuarkusExtension(String id) {
+        Pet pet = webClient.get().uri("/pet/" + id).retrieve().bodyToMono(Pet.class).block();
+        return pet;
     }
 
 }

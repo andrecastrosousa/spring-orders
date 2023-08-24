@@ -16,9 +16,7 @@ application:
       refresh-token:
         expiration: 604800000 # 7 days
 server:
-  servlet:
-    context-path: /employee-service
   port: 8080
 addressservice:
   base:
-    url: https://stage.code.quarkus.io/api
+    url: https://petstore.swagger.io/v2

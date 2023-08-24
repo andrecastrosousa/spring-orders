@@ -6,7 +6,9 @@ import mindswap.academy.springorders.auth.repository.TokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LogoutServiceImpl implements LogoutService {
     private final TokenRepository tokenRepository;
 
