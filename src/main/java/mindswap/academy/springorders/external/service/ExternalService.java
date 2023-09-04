@@ -4,6 +4,10 @@ import mindswap.academy.springorders.external.model.Pet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class ExternalService {
@@ -15,8 +19,10 @@ public class ExternalService {
     }
 
     public Pet getQuarkusExtension(String id) {
-        Pet pet = webClient.get().uri("/pet/" + id).retrieve().bodyToMono(Pet.class).block();
-        return pet;
+        AtomicReference<Pet> pet = null;
+        Flux<Pet> monoPet = webClient.get().uri("/pet/" + id).retrieve().bodyToFlux(Pet.class);
+        monoPet.subscribe(consumer -> pet.set(consumer));
+        return pet.get();
     }
 
 }

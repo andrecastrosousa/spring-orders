@@ -42,6 +42,10 @@ public class OrderItemServiceImpl implements OrderItemService {
         this.itemRepository = itemRepository;
     }
 
+    public OrderItemServiceImpl() {
+
+    }
+
     @Override
     public List<OrderItemDto> getListOfOrderItem(Long orderId) {
         Order order = orderRepository.findById(orderId).orElse(null);
@@ -135,6 +139,8 @@ public class OrderItemServiceImpl implements OrderItemService {
         double itemPrice = item.getPrice();
         double totalToDecrement = itemPrice * previousQuantity;
         double totalToIncrement = itemPrice * newQuantity;
+
+        System.out.println("alo" + totalToIncrement);
 
         return order.getTotal() - totalToDecrement + totalToIncrement;
     }
